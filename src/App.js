@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ParticlesBg from 'particles-bg';
+import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import Navigation from "./components/Navigation/Navigation";
 import SignIn from "./components/SignIn/SignIn";
 import Register from "./components/Register/Register";
@@ -62,32 +63,33 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-    fetch("http://localhost:3000/imageurl", {
-      method: "post",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        input: this.state.input
+      fetch('http://localhost:3000/imageurl', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          input: this.state.input
+        })
       })
-    })
-    .then(res => res.json())
-    .then(res => {
-      if (res) {
-        fetch("http://localhost:3000/image", {
-          method: "put",
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify({
-            id: this.state.user.id
+      .then(response => response.json())
+      .then(response => {
+        if (response) {
+          fetch('http://localhost:3000/image', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              id: this.state.user.id
+            })
           })
-        })
-        .then(res => res.json())
-        .then(count => {
-          this.setState(Object.assign(this.state.user, { entries: count }))
-        })
-        .catch(console.log)
-      }
-      this.displayFaceBox(this.calculateFaceLocation(response))
-    })
-    .catch(e => console.log(e));
+            .then(response => response.json())
+            .then(count => {
+              this.setState(Object.assign(this.state.user, { entries: count}))
+            })
+            .catch(console.log)
+
+            this.displayFaceBox(this.calculateFaceLocation(response))
+        }
+      })
+      .catch(err => console.log(err));
   }
 
   onRouteChange = route => {
@@ -116,6 +118,7 @@ class App extends Component {
                 onInputChange={this.onInputChange}
                 onButtonSubmit={this.onButtonSubmit}
               />
+              <FaceRecognition box={box} imageUrl={imageUrl} />
             </div>
           : (
               route === "signin"
