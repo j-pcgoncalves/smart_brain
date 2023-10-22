@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ParticlesBg from 'particles-bg';
 import Navigation from "./components/Navigation/Navigation";
+import SignIn from "./components/SignIn/SignIn";
 import './App.css';
 
 const initialState = {
@@ -24,9 +25,22 @@ class App extends Component {
     this.state = initialState;
   }
 
+  loadUser = (data) => {
+    this.setState({user: {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      entries: data.entries,
+      joined: data.joined,
+    }})
+  }
+
+  
+
   onRouteChange = route => {
     if (route === "signout") {
       this.setState(initialState);
+      console.log(this.state);
     } else if (route === "home") {
       this.setState({ isSignedIn: true })
     }
@@ -39,6 +53,16 @@ class App extends Component {
       <div className="App">
         <ParticlesBg type='cobweb' num={150} bg={true} />
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+        { route === "home" 
+          ? <div>
+
+            </div>
+          : (
+              route === "signin"
+              ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              : <div></div>
+            ) 
+        }
       </div>
     );
   }

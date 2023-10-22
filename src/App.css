@@ -6,3 +6,11 @@
   display: flex;
   justify-content: center;
 }
+
+article {
+  backdrop-filter: blur(5px);
+}
+
+input {
+  border: 1px solid black;
+}
