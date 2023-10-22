@@ -3,6 +3,8 @@ import ParticlesBg from 'particles-bg';
 import Navigation from "./components/Navigation/Navigation";
 import SignIn from "./components/SignIn/SignIn";
 import Register from "./components/Register/Register";
+import Logo from "./components/Logo/Logo";
+import Rank from "./components/Rank/Rank";
 import './App.css';
 
 const initialState = {
@@ -41,7 +43,6 @@ class App extends Component {
   onRouteChange = route => {
     if (route === "signout") {
       this.setState(initialState);
-      console.log(this.state);
     } else if (route === "home") {
       this.setState({ isSignedIn: true })
     }
@@ -49,7 +50,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.user);
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
       <div className="App">
@@ -57,7 +57,11 @@ class App extends Component {
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         { route === "home" 
           ? <div>
-
+              <Logo />
+              <Rank 
+                name={this.state.user.name}
+                entries={this.state.user.entries}
+              />
             </div>
           : (
               route === "signin"
