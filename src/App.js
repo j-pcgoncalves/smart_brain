@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ParticlesBg from 'particles-bg';
 import Navigation from "./components/Navigation/Navigation";
 import SignIn from "./components/SignIn/SignIn";
+import Register from "./components/Register/Register";
 import './App.css';
 
 const initialState = {
@@ -48,6 +49,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.user);
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
       <div className="App">
@@ -60,7 +62,7 @@ class App extends Component {
           : (
               route === "signin"
               ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
-              : <div></div>
+              : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
             ) 
         }
       </div>
