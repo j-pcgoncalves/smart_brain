@@ -5,7 +5,7 @@ This project is made with React. It integrates with a PostgreSQL Database to be 
 ## How to Use
 
 You can clone this project to your computer. After that just run "npm start" on your terminal to start the development server.
-(For this project to work correctly you also need to clone and start the Smart Brain API project)
+- (For this project to work correctly you also need to clone and start the Smart Brain API project)
 
 ## Credits
 
