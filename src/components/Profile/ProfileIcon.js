@@ -6,7 +6,7 @@ import {
     DropdownItem 
 } from "reactstrap";
 
-const ProfileIcon = () => {
+const ProfileIcon = ({ onRouteChange }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggle = () => {
@@ -27,12 +27,13 @@ const ProfileIcon = () => {
                         alt="Avatar" 
                     />
                 </DropdownToggle>
-                <DropdownMenu 
+                <DropdownMenu
+                    right
                     className="b--transparent shadow-5" 
                     style={{ marginTop: "20px", backgroundColor: "rgba(255, 255, 255, 0.5)" }}
                 >
                     <DropdownItem>View Profile</DropdownItem>
-                    <DropdownItem>Sign Out</DropdownItem>
+                    <DropdownItem onClick={() => onRouteChange("signout")}>Sign Out</DropdownItem>
                 </DropdownMenu>
             </Dropdown>
         </div>
