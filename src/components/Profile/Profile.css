@@ -9,3 +9,13 @@
     align-items: center;
     justify-content: center;
 }
+
+.modal-close {
+    font-size: 3rem;
+    cursor: pointer;
+    height: 0%;
+}
+
+.modal-close:hover {
+    color: grey;
+}
