@@ -6,7 +6,7 @@ import {
     DropdownItem 
 } from "reactstrap";
 
-const ProfileIcon = ({ onRouteChange }) => {
+const ProfileIcon = ({ onRouteChange, toggleModal }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggle = () => {
@@ -22,17 +22,17 @@ const ProfileIcon = ({ onRouteChange }) => {
                     aria-expanded={dropdownOpen}
                 >
                     <img 
-                        src="https://avatar.iran.liara.run/public/42g" 
+                        src="https://i.pravatar.cc/300" 
                         className="br-100 ba h3 w3 dib" 
                         alt="Avatar" 
                     />
                 </DropdownToggle>
                 <DropdownMenu
-                    right
+                    end
                     className="b--transparent shadow-5" 
                     style={{ marginTop: "20px", backgroundColor: "rgba(255, 255, 255, 0.5)" }}
                 >
-                    <DropdownItem>View Profile</DropdownItem>
+                    <DropdownItem onClick={toggleModal}>View Profile</DropdownItem>
                     <DropdownItem onClick={() => onRouteChange("signout")}>Sign Out</DropdownItem>
                 </DropdownMenu>
             </Dropdown>
