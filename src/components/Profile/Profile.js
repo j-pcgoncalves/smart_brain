@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "./Profile.css";
 
-const Profile = ({ toggleModal, user }) => {
+const Profile = ({ toggleModal, user, loadUser }) => {
     const [name, setName] = useState(user.name);
     const [age, setAge] = useState(user.age);
     const [pet, setPet] = useState(user.pet);
@@ -21,6 +21,19 @@ const Profile = ({ toggleModal, user }) => {
             default:
                 return;
         }
+    }
+
+    const onProfileUpdate = (data) => {
+        fetch(`http://localhost:3000/profile/${user.id}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ formInput: data })
+        }).then(resp => {
+            toggleModal();
+            loadUser({ ...user, ...data });
+        }).catch(console.log);
     }
 
     return (
@@ -64,7 +77,10 @@ const Profile = ({ toggleModal, user }) => {
                         onChange={onFormChange}
                     />
                     <div className="mt4" style={{ display: "flex", justifyContent: "space-evenly" }}>
-                        <button className="b pa2 grow pointer hover-white w-40 bg-light-blue b--black-20">
+                        <button 
+                            className="b pa2 grow pointer hover-white w-40 bg-light-blue b--black-20"
+                            onClick={() => onProfileUpdate({ name, age, pet })}
+                        >
                             Save
                         </button>
                         <button 

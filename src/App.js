@@ -133,6 +133,7 @@ class App extends Component {
               <Profile
                 toggleModal={this.toggleModal} 
                 user={user}
+                loadUser={this.loadUser}
               />
             </Modal>
         }
