@@ -174,7 +174,6 @@ class App extends Component {
             </Modal>
         }
         <Modal>
-          {"hello"}
         </Modal>
         { route === "home" 
           ? <div>
