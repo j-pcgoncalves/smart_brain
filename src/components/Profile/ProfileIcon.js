@@ -13,6 +13,11 @@ const ProfileIcon = ({ onRouteChange, toggleModal }) => {
         setDropdownOpen(!dropdownOpen);
     }
 
+    const handleSignOut = () => {
+        window.sessionStorage.removeItem("token");
+        onRouteChange("signout");
+    }
+
     return (
         <div className="pa4 tc">
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
@@ -33,7 +38,7 @@ const ProfileIcon = ({ onRouteChange, toggleModal }) => {
                     style={{ marginTop: "20px", backgroundColor: "rgba(255, 255, 255, 0.5)" }}
                 >
                     <DropdownItem onClick={toggleModal}>View Profile</DropdownItem>
-                    <DropdownItem onClick={() => onRouteChange("signout")}>Sign Out</DropdownItem>
+                    <DropdownItem onClick={handleSignOut}>Sign Out</DropdownItem>
                 </DropdownMenu>
             </Dropdown>
         </div>
