@@ -1,6 +1,6 @@
 # Smart Brain
 
-This project is made with React. It has a Login and Register Pages. This project uses a PostgreSQL DB to store the users. Inside the website, the user has an input field where they can input an image URL. The website then connects with the Clarifai API which returns information about the faces inside the image and displays the location of the faces to the user. It also keeps track of how many times a user inputs an URL
+This project is made with React. It has a Login and Register Pages. This project uses a PostgreSQL DB to store the users. Inside the website, the user has an input field where they can input an image URL. The website then connects with the Clarifai API which returns information about the faces inside the image and displays the location of the faces to the user. It also keeps track of how many times a user inputs an URL. It makes use of sessionStorage and a Redis Client DB to manage Token Sessions.
 
 ## How to Use
 

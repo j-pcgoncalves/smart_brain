@@ -40,8 +40,8 @@ class SignIn extends React.Component {
                     fetch(`http://localhost:3000/profile/${data.userId}`, {
                         method: "get",
                         headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": data.token
+                            "Content-Type": "application/json",
+                            "Authorization": data.token
                         }
                     })
                         .then(resp => resp.json())
